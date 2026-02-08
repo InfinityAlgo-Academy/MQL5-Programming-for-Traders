@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://infinityalgoacademy.github.io/MQL5-Programming-for-Traders/sitemap.xml
