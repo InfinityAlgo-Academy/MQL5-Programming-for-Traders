@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation | MQL5 Programming for Traders</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Technical documentation and architectural overview for MQL5 Programming for Traders. Professional algorithmic trading development guide.">
+
+    <!-- Favicon Assets -->
+    <link rel="icon" type="image/jpeg" sizes="32x32"
+        href="https://infinityalgoacademy.net/wp-content/uploads/2025/06/cropped-cropped-photo_2025-06-04_18-26-58-1-32x32.jpg">
+    <link rel="icon" type="image/jpeg" sizes="192x192"
+        href="https://infinityalgoacademy.net/wp-content/uploads/2025/06/cropped-cropped-photo_2025-06-04_18-26-58-1-192x192.jpg">
+    <link rel="apple-touch-icon"
+        href="https://infinityalgoacademy.net/wp-content/uploads/2025/06/cropped-cropped-photo_2025-06-04_18-26-58-1-180x180.jpg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #F6E05E;
+            --dark: #050505;
+            --darkER: #020202;
+            --card-bg: #0D0D0D;
+            --text-light: #F7FAFC;
+            --text-dim: #94A3B8;
+            --border: rgba(212, 175, 55, 0.15);
+            --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            --sidebar-width: 300px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--text-light);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 400;
+            line-height: 1.7;
+            overflow-x: hidden;
+            display: flex;
+        }
+
+        /* Ambient Glow */
+        .ambient-glow {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background:
+                radial-gradient(circle at 85% 10%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 10% 90%, rgba(212, 175, 55, 0.03) 0%, transparent 40%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Sidebar Navigation */
+        aside {
+            width: var(--sidebar-width);
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background: var(--darkER);
+            border-right: 1px solid var(--border);
+            padding: 2.5rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            z-index: 1001;
+            overflow-y: auto;
+        }
+
+        .sidebar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 3.5rem;
+            text-decoration: none;
+        }
+
+        .sidebar-brand img {
+            width: 38px;
+            border-radius: 50%;
+            border: 1px solid var(--gold);
+        }
+
+        .sidebar-brand .text {
+            line-height: 1.1;
+        }
+
+        .sidebar-brand .text span:first-child {
+            display: block;
+            color: var(--gold);
+            font-weight: 800;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-group {
+            margin-bottom: 2.5rem;
+        }
+
+        .nav-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-dim);
+            margin-bottom: 1.2rem;
+            font-weight: 800;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            display: block;
+            padding: 4px 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+            transform: translateX(5px);
+        }
+
+        /* Main Content Area */
+        main {
+            margin-left: var(--sidebar-width);
+            width: calc(100% - var(--sidebar-width));
+            padding: 5rem 8rem;
+        }
+
+        .doc-header {
+            margin-bottom: 6rem;
+        }
+
+        .section-tag {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+        }
+
+        .doc-intro {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            max-width: 800px;
+        }
+
+        /* Documentation Sections */
+        section {
+            padding: 6rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2.5rem;
+            color: var(--gold);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1rem;
+            color: var(--text-light);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-dim);
+            max-width: 850px;
+        }
+
+        /* Code Blocks */
+        pre {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 4px;
+            margin: 2rem 0;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #d1d5db;
+        }
+
+        .code-lang {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 0.65rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.5;
+        }
+
+        /* Feature Grid */
+        .feature-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            border-radius: 4px;
+        }
+
+        .feature-item h4 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 0;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        .back-home {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--gold);
+            color: #000;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            font-weight: 800;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
+        }
+
+        .back-home:hover {
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 1024px) {
+            aside {
+                display: none;
+            }
+
+            main {
+                margin-left: 0;
+                width: 100%;
+                padding: 4rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="ambient-glow"></div>
+
+    <aside>
+        <a href="index.html" class="sidebar-brand">
+            <img src="https://infinityalgoacademy.net/wp-content/uploads/2025/06/cropped-photo_2025-06-04_18-26-58-3.jpg"
+                alt="Logo">
+            <div class="text">
+                <span>INFINITYALGO</span>
+                <span>CORE DOCS</span>
+            </div>
+        </a>
+
+        <div class="nav-group">
+            <h3 class="nav-title">Fundamentals</h3>
+            <ul class="nav-links">
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#syntax">Language Syntax</a></li>
+                <li><a href="#architecture">MT5 Architecture</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-group">
+            <h3 class="nav-title">Expert Advisors</h3>
+            <ul class="nav-links">
+                <li><a href="#events">Event Handling</a></li>
+                <li><a href="#trade">Trade Operations</a></li>
+                <li><a href="#oop">OOP Principles</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-group">
+            <h3 class="nav-title">Infrastructure</h3>
+            <ul class="nav-links">
+                <li><a href="#indicators">Custom Indicators</a></li>
+                <li><a href="#optimization">Cloud Optimization</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <main>
+        <header class="doc-header">
+            <span class="section-tag">Digital Masterclass</span>
+            <h1>MQL5 Framework <br>Operational Guide.</h1>
+            <p class="doc-intro">The definitive technical manual for transitioning from manual retail trading to
+                institutional-grade algorithmic execution. This documentation covers the core logic extracted from our
+                master publication.</p>
+        </header>
+
+        <section id="intro">
+            <h2>01. The Paradigm Shift</h2>
+            <p>MQL5 is not just a scripting language; it is a specialized C++ variant designed for high-performance
+                financial operations. To succeed, one must move away from "guessing" and move toward "statistical
+                validation".</p>
+            <div class="feature-box">
+                <div class="feature-item">
+                    <h4>Low-Latency</h4>
+                    <p>Sub-millisecond event processing for HFT execution.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Asynchronous</h4>
+                    <p>Multi-threaded trade operations across diverse assets.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Cloud-Ready</h4>
+                    <p>Massive backtesting capabilities via MetaTester Cloud.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="syntax">
+            <h2>02. Core Architecture</h2>
+            <p>Every professional EA follows a strict structural hierarchy. Understanding the <code>OnInit()</code>,
+                <code>OnDeinit()</code>, and <code>OnTick()</code> cycle is critical for system stability.</p>
+
+            <pre><span class="code-lang">mql5</span><code>// Basic EA Framework
+int OnInit() {
+   // Initialize indicators and global variables
+   Print("System Online | MT5 Cloud Initialized");
+   return(INIT_SUCCEEDED);
+}
+
+void OnTick() {
+   // Core algorithm logic executed on every price change
+   if(CalculateSignal() == BUY) {
+      ExecuteOrder(ORDER_TYPE_BUY);
+   }
+}</code></pre>
+
+            <h3>Data Handling</h3>
+            <p>MT5 handles time-series data differently than MT4. We utilize specialized handlers to fetch the most
+                recent data points without blocking the main thread.</p>
+        </section>
+
+        <section id="events">
+            <h2>03. Institutional Event Models</h2>
+            <p>Commercial-grade algorithms don't just react to price. They react to <strong>Time, Depth of Market (DOM),
+                    and Trade Events</strong>.</p>
+            <ul>
+                <li><strong>OnTimer():</strong> Execute logic at precise intervals (milliseconds).</li>
+                <li><strong>OnBookEvent():</strong> React to liquidity changes in the order book.</li>
+                <li><strong>OnTradeTransaction():</strong> Handle slippage and execution reports in real-time.</li>
+            </ul>
+        </section>
+
+        <section id="oop">
+            <h2>04. OOP Implementation</h2>
+            <p>Why use OOP? Modularity and Scalability. By treating indicators and risk managers as "Objects", we can
+                swap strategies instantly without rewriting the core engine.</p>
+
+            <pre><span class="code-lang">mql5</span><code>class CRiskManager {
+private:
+   double max_drawdown;
+public:
+   bool IsTradeAllowed();
+   void CalculatePositionSize();
+};</code></pre>
+        </section>
+
+        <section id="optimization">
+            <h2>05. Optimization & Stress Testing</h2>
+            <p>A strategy is only as good as its worst-case scenario. We utilize Monte Carlo simulations and
+                Walk-Forward Analysis to ensure robustness across varying market regimes.</p>
+            <p>The book details the exact parameters for the <strong>Genetic Algorithm</strong> optimization to avoid
+                curve-fitting (over-optimization).</p>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 INFINITYALGO ACADEMY. ALL RIGHTS RESERVED. <br>DESIGNED FOR INSTITUTIONAL MASTERY.</p>
+        </footer>
+    </main>
+
+    <a href="index.html" class="back-home">Return to Hub</a>
+
+</body>
+
+</html>
