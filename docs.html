@@ -39,6 +39,20 @@
             --sidebar-width: 320px;
         }
 
+        /* Clean Scrollbar */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 10px;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -59,7 +73,7 @@
             display: flex;
         }
 
-        /* Ambient Glow - Pure Gold Tone, No Blue */
+        /* Ambient Glow - PURE GOLD, ABSOLUTELY NO BLUE */
         .ambient-glow {
             position: fixed;
             width: 100vw;
@@ -85,19 +99,6 @@
             flex-direction: column;
             z-index: 1001;
             overflow-y: auto;
-        }
-
-        /* Fixed Sidebar Scrollbar */
-        aside::-webkit-scrollbar {
-            width: 3px;
-        }
-
-        aside::-webkit-scrollbar-track {
-            background: var(--darkER);
-        }
-
-        aside::-webkit-scrollbar-thumb {
-            background: var(--gold);
         }
 
         .sidebar-brand {
@@ -127,10 +128,13 @@
         }
 
         .sidebar-brand .text span:last-child {
-            font-size: 0.6rem;
-            color: var(--text-dim);
+            font-size: 0.65rem;
+            color: var(--gold);
+            /* Switched from dim blue to gold */
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            opacity: 0.7;
+            font-weight: 800;
         }
 
         .nav-group {
@@ -265,13 +269,14 @@
             letter-spacing: 1px;
         }
 
-        /* Code Blocks - JetBrains Mono with absolute dark styling */
+        /* Code Blocks */
         pre {
             background: #000;
             border: 1px solid var(--border);
             padding: 2.5rem;
-            border-radius: 4px;
-            margin: 3rem 0;
+            border-radius: 0 0 4px 4px;
+            margin: 0;
+            margin-bottom: 4rem;
             overflow-x: auto;
             position: relative;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
@@ -288,16 +293,16 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px;
+            padding: 12px 25px;
             background: #0d0d0d;
             border: 1px solid var(--border);
             border-bottom: none;
             border-radius: 4px 4px 0 0;
-            margin-top: 3rem;
+            margin-top: 4rem;
         }
 
         .code-header span {
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             color: var(--text-dim);
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -306,11 +311,6 @@
         .code-header span.lang {
             color: var(--gold);
             font-weight: 800;
-        }
-
-        pre {
-            margin-top: 0;
-            border-radius: 0 0 4px 4px;
         }
 
         /* Feature Pillars */
@@ -332,14 +332,39 @@
         .pillar-card:hover {
             border-color: var(--gold);
             transform: translateY(-5px);
-            background: rgba(212, 175, 55, 0.02);
         }
 
         .pillar-card h4 {
             color: var(--gold);
             font-size: 1.4rem;
             margin-bottom: 1.2rem;
-            font-family: 'Playfair Display', serif;
+        }
+
+        /* Tech Table */
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 3rem 0;
+        }
+
+        .tech-table th,
+        .tech-table td {
+            text-align: left;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+        }
+
+        .tech-table th {
+            background: rgba(212, 175, 55, 0.05);
+            color: var(--gold);
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .tech-table td {
+            color: var(--text-dim);
         }
 
         /* Chapter Indicator */
@@ -374,21 +399,22 @@
         }
 
         .back-home:hover {
-            transform: translateY(-8px) scale(1.05);
+            transform: translateY(-8px);
             background: var(--gold-light);
         }
 
-        /* Custom List Styling */
+        /* Feature List */
         .feature-list {
             list-style: none;
-            margin: 2rem 0;
+            margin: 2.5rem 0;
         }
 
         .feature-list li {
             position: relative;
-            padding-left: 2rem;
-            margin-bottom: 1.2rem;
+            padding-left: 2.5rem;
+            margin-bottom: 1.5rem;
             color: var(--text-dim);
+            font-size: 1.05rem;
         }
 
         .feature-list li::before {
@@ -477,37 +503,42 @@
         <header class="doc-header">
             <span class="section-tag">Institutional Technical Dossier</span>
             <h1>Technical Framework <br>& Operational Logic.</h1>
-            <p class="doc-intro">A deep-dive exploration into the MQL5 operational ecosystem. Designed for developers
-                transitioning from retail scripts to autonomous high-frequency systems based on Stanislav Korotky's
-                master blueprints.</p>
+            <p class="doc-intro">A massive, deep-dive exploration into the MQL5 operational ecosystem. Designed for
+                advanced quants transitioning from retail scripts to high-performance autonomous systems based on
+                Stanislav Korotky's core blueprints.</p>
         </header>
 
         <!-- Section 1 -->
         <section id="intro" style="position: relative;">
             <div class="chapter-num">01</div>
             <h2>Architectural Philosophy</h2>
-            <p>MQL5 is built upon the <strong>C++11 standard</strong>, bringing object-oriented programming to the
-                forefront of quantitative finance. Unlike its predecessor, MQL5 is <strong>asynchronous</strong> and
-                <strong>event-driven</strong>, allowing for multi-threaded execution across multiple assets
-                simultaneously.</p>
+            <p>MQL5 represents the pinnacle of retail-side quantitative development. It is built strictly on the
+                <strong>C++11 standard</strong>, allowing developers to implement complex data structures, inheritance,
+                and polymorphic interfaces that were previously impossible in legacy environments.</p>
+
+            <h3>High-Performance Core</h3>
+            <p>The system is designed for <strong>non-blocking asynchronous execution</strong>. In a manual trading
+                setup, a trader waits for order confirmation. In an institutional MQL5 architecture, the EA continues to
+                process market data and manage other open positions while orders are being filled at the server level.
+            </p>
 
             <div class="pillar-grid">
                 <div class="pillar-card">
-                    <h4>Asynchronous Core</h4>
-                    <p>Execution of multiple trade operations without blocking the main program thread, ensuring
-                        liquidity access at peak volatility.</p>
+                    <h4>Asynchronous Pipelines</h4>
+                    <p>Leveraging specialized trade queues to handle multiple asset classes simultaneously without
+                        IO-blocking.</p>
                 </div>
                 <div class="pillar-card">
-                    <h4>Typed Security</h4>
-                    <p>Strict data typing ensures that memory allocation is handled efficiently, preventing system
-                        crashes during high-frequency data influx.</p>
+                    <h4>Direct Memory Access</h4>
+                    <p>Utilizing high-speed buffer handlers to pull price data directly from the terminal terminal cache
+                        at hardware speed.</p>
                 </div>
             </div>
 
             <div class="callout">
-                The shift from MT4 to MT5 isn't just an upgrade; it's a paradigm shift. We leverage <strong>Handle-based
-                    Object access</strong> to interact with buffers at the hardware level, minimizing the latency
-                between signal generation and order placement.
+                <strong>Strategic Insight:</strong> Success in algorithmic trading is a function of <strong>Execution
+                    Quality</strong> and <strong>Model Robustness</strong>. MQL5 provides the tools for both, provided
+                the developer adheres to OOP modularity.
             </div>
         </section>
 
@@ -515,59 +546,89 @@
         <section id="syntax" style="position: relative;">
             <div class="chapter-num">02</div>
             <h2>Memory & Performance</h2>
-            <p>Institutional grade code focuses on <strong>Memory Optimization</strong>. We utilize pre-allocated arrays
-                and buffer handlers to ensure the CPU remains available for the actual decision-making logic.</p>
+            <p>Institutional code is defined by its <strong>Memory Efficiency</strong>. Every byte allocated during an
+                <code>OnTick()</code> event increases the latency of the signal. Our framework utilizes static
+                pre-allocation to ensure zero-lag execution.</p>
 
             <div class="code-header">
-                <span>Memory Allocation Strategy</span>
+                <span>Static Buffer Allocation</span>
                 <span class="lang">mql5</span>
             </div>
-            <pre><code>// Pre-allocating buffers to avoid dynamic resizing lag
-double BufferSignals[];
-int buffer_handle;
+            <pre><code>// Essential for high-frequency processing: Zero dynamic resizing
+double PriceData[];
+int handle_atr;
 
 int OnInit() {
-   // Pre-fetch historical data handlers
-   ArraySetAsSeries(BufferSignals, true);
-   buffer_handle = iRSI(_Symbol, _Period, 14, PRICE_CLOSE);
+   // Set pre-defined signal buffers
+   ArraySetAsSeries(PriceData, true);
    
-   if(buffer_handle == INVALID_HANDLE) return(INIT_FAILED);
+   // Direct handler to MT5 Calculation Engine
+   handle_atr = iATR(_Symbol, _Period, 14);
+   
+   if(handle_atr == INVALID_HANDLE) {
+      Print("CRITICAL: Indicator sub-system failed to initialize.");
+      return(INIT_FAILED);
+   }
    return(INIT_SUCCEEDED);
 }</code></pre>
 
-            <h3>The Execution Cycle</h3>
-            <p>The <strong>MQL5 Virtual Machine (MQL5 VM)</strong> executes code at speeds comparable to native C++. In
-                our framework, we prioritize <code>OnTick()</code> efficiency by offloading heavy calculations to
-                <code>OnTimer()</code> loops where appropriate.</p>
+            <h3>The Virtual Machine Engine</h3>
+            <p>MQL5 code is JIT-compiled (Just-In-Time) into native machine code. This allows for execution speeds that
+                are virtually identical to pure C++. To maximize this power, we avoid using global variables where
+                local-pointers can be utilized, significantly reducing the cache-miss ratio during intensive
+                backtesting.</p>
         </section>
 
         <!-- Section 3 -->
         <section id="events" style="position: relative;">
             <div class="chapter-num">03</div>
             <h2>The Event Machine</h2>
-            <p>The heart of any modern Expert Advisor (EA) is its ability to process specialized events. We categorize
-                events into three priority layers:</p>
+            <p>Autonomous systems are <strong>reactive</strong>. The MQL5 event engine is the nervous system of the EA,
+                responding to micro-second changes in market conditions.</p>
 
-            <ul class="feature-list">
-                <li><strong>Critical Events (OnTick, OnCalculate):</strong> Direct market data updates requiring
-                    immediate logic evaluation.</li>
-                <li><strong>Network Events (OnTradeTransaction):</strong> Feedback from the server regarding execution
-                    status, slippage, and fill rates.</li>
-                <li><strong>Environmental Events (OnTimer, OnChartEvent):</strong> Periodic health checks and UI
-                    interactions.</li>
-            </ul>
+            <table class="tech-table">
+                <thead>
+                    <tr>
+                        <th>Event Type</th>
+                        <th>Priority</th>
+                        <th>Institutional Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>OnTick()</td>
+                        <td>Critical</td>
+                        <td>Signal logic & entry execution.</td>
+                    </tr>
+                    <tr>
+                        <td>OnTradeTransaction()</td>
+                        <td>High</td>
+                        <td>Order status tracking & slippage logging.</td>
+                    </tr>
+                    <tr>
+                        <td>OnBookEvent()</td>
+                        <td>Moderate</td>
+                        <td>Level 2 Liquidity & Order Flow Analysis.</td>
+                    </tr>
+                    <tr>
+                        <td>OnTimer()</td>
+                        <td>System</td>
+                        <td>Health-checks, Heartbeats & Trailing Stops.</td>
+                    </tr>
+                </tbody>
+            </table>
 
             <div class="code-header">
-                <span>Transaction Monitoring</span>
+                <span>Transaction Intelligence</span>
                 <span class="lang">mql5</span>
             </div>
             <pre><code>void OnTradeTransaction(const MqlTradeTransaction& trans,
                         const MqlTradeRequest& request,
                         const MqlTradeResult& result) {
-   // Institutional grade logging of slippage and execution speed
+   // Every institutional system must log execution slippage
    if(trans.type == TRADE_TRANSACTION_DEAL_ADD) {
-      double slippage = MathAbs(trans.price - request.price);
-      LogExecutionQuality(trans.deal, slippage);
+      double exec_slippage = MathAbs(trans.price - request.price);
+      AnalyzeExecutionQuality(trans.symbol, exec_slippage);
    }
 }</code></pre>
         </section>
@@ -576,42 +637,75 @@ int OnInit() {
         <section id="trade" style="position: relative;">
             <div class="chapter-num">04</div>
             <h2>Atomic Trade Operations</h2>
-            <p>In high-precision trading, we do not use simple order functions. We utilize <strong>CTrade</strong> class
-                extensions to ensure every request is atomic and validated against current market depth (DOM).</p>
+            <p>Standard trade functions are for retail scripts. Professional systems utilize <strong>Atomic
+                    Requests</strong> via the <code>MqlTradeRequest</code> structure. This ensures that every order
+                being sent to the bridge contains explicit instructions for slippage, expiration, and execution type
+                (Fill-or-Kill vs Immediate-or-Cancel).</p>
 
-            <h3>Risk Guard Framework</h3>
-            <p>Every trade request must pass through the <strong>RiskGuard Module</strong> before leaving the local
-                machine. This module validates:</p>
+            <h3>The Risk-Guard Pipeline</h3>
+            <p>Our operational framework forces every signal through a <strong>Multi-Stage Validation Pipeline</strong>:
+            </p>
             <ul class="feature-list">
-                <li>Maximum Daily Drawdown limits.</li>
-                <li>Correlation exposure across open pairs.</li>
-                <li>Volatility-adjusted position sizing (ATR based).</li>
+                <li><strong>Phase 1: Environment Check</strong> (Spread check, Freeze level validation, Broker
+                    connectivity).</li>
+                <li><strong>Phase 2: Mathematical Check</strong> (Position size vs Equity, Margin requirements).</li>
+                <li><strong>Phase 3: Portfolio Check</strong> (Correlation check vs existing open positions).</li>
+                <li><strong>Phase 4: Permission Check</strong> (Daily loss limits, session trading windows).</li>
             </ul>
         </section>
 
         <!-- Section 5 -->
-        <section id="#optimization" style="position: relative;">
+        <section id="oop" style="position: relative;">
             <div class="chapter-num">05</div>
+            <h2>Polymorphic EA Design</h2>
+            <p>We treat every component of the EA as a <strong>Modular Object</strong>. By using abstract base classes
+                (<code>CBaseStrategy</code>), we can create an EA that swaps between Trend-Following and Mean-Reversion
+                logic instantly based on market regime detection.</p>
+
+            <div class="code-header">
+                <span>Abstract Strategic Interface</span>
+                <span class="lang">mql5</span>
+            </div>
+            <pre><code>class CStrategy {
+   public:
+      virtual bool SignalOpen() = 0;
+      virtual bool SignalClose() = 0;
+};
+
+class CTrendFollowing : public CStrategy {
+   public:
+      bool SignalOpen() override {
+         // Specialized trend logic here
+         return (Price > MovingAverage);
+      }
+};</code></pre>
+        </section>
+
+        <!-- Section 6 -->
+        <section id="optimization" style="position: relative;">
+            <div class="chapter-num">06</div>
             <h2>The Optimization Nexus</h2>
-            <p>Standard backtesting is a trap. We implement <strong>Walk-Forward Analysis (WFA)</strong> to verify that
-                our parameters hold weight in unseen market conditions. The "Nexus" approach involves:</p>
+            <p>Profitability in the past is no guarantee of future success. To avoid the trap of
+                <strong>Curve-Fitting</strong>, we utilize the <strong>Optimization Nexus</strong> approach, which
+                relies on multi-dimensional stress testing.</p>
 
             <div class="pillar-grid">
                 <div class="pillar-card">
-                    <h4>Monte Carlo Analysis</h4>
-                    <p>Randomizing execution delays and spread fluctuations to see if the strategy survives "bad luck"
-                        scenarios.</p>
+                    <h4>Walk-Forward Analysis (WFA)</h4>
+                    <p>Dividing historical data into 'In-Sample' for training and 'Out-of-Sample' for verification,
+                        ensuring the logic generalizes across time.</p>
                 </div>
                 <div class="pillar-card">
-                    <h4>Heat-Map Filtering</h4>
-                    <p>Identifying parameter "islands" where the strategy is profitable across a wide range of settings,
-                        indicating robustness.</p>
+                    <h4>Monte Carlo Simulations</h4>
+                    <p>Subjecting the EA to 1000+ variations of trade sequences, slippage models, and spread spikes to
+                        find the 'Ruin Probability'.</p>
                 </div>
             </div>
 
             <div class="callout">
-                Our Cloud Optimization workflow leverages over <strong>20,000+ nodes</strong> via the MetaTester
-                Network, turning a month of calculations into a 15-minute operational task.
+                <strong>Cloud Scale:</strong> By utilizing the <strong>InfinityAlgo Cloud Workflow</strong>, we can
+                execute 50,000 optimization passes across the MetaTester Cloud Network in less than 30 minutes, a task
+                that would take a single PC over 120 days.
             </div>
         </section>
 
