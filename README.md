@@ -1,6 +1,6 @@
 # MQL5 Programming for Traders: The Definitive Blueprint for Algorithmic Mastery 📘🤖
 
-![MQL5 Programming for Traders Master Banner](https://infinityalgoacademy.net/wp-content/uploads/2026/02/mql5-programming-for-traders-cover-300x300-9856.png)
+![MQL5 Programming for Traders Master Banner](https://infinityalgoacademy.net/wp-content/uploads/2026/02/MQL5-Programming-for-Traders.webp)
 
 ## 🌐 Transition from Manual Trader to Quant Developer
 **MQL5 Programming for Traders** is not just a coding guide—it is a strategic manual for the modern financial era. Written by veteran developer **Stanislav Korotky**, this book provides the elite-level foundations required to bridge the gap between discretionary intuition and high-frequency algorithmic precision.
