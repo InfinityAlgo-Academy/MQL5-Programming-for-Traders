@@ -4,25 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MQL5 Programming for Traders | Official Landing Page</title>
+    <title>MQL5 Programming for Traders | Master Algorithmic Execution at InfinityAlgo</title>
+
+    <!-- SEO Meta Tags -->
     <meta name="description"
-        content="Master MQL5 programming today. The definitive guide by Stanislav Korotky for MetaTrader 5 automation. Learn to build EAs and indicators.">
-    <!-- Google Fonts -->
+        content="Unlock the world of MetaTrader 5 automation with Stanislav Korotky's MQL5 Programming for Traders. Build professional EAs, dynamic indicators, and institutional risk tools.">
+    <meta name="keywords"
+        content="MQL5 Programming, Stanislav Korotky, MetaTrader 5 EA, Algorithmic Trading Book, MQL5 Tutorial, Quant Developer, Trading Automation, InfinityAlgo Academy">
+    <meta name="author" content="InfinityAlgo Academy">
+    <meta property="og:title" content="MQL5 Programming for Traders | Master Algorithmic Execution">
+    <meta property="og:description"
+        content="The definitive guide for MT5 development. Transition from manual trading to automated mastery.">
+    <meta property="og:image"
+        content="https://infinityalgoacademy.net/wp-content/uploads/2026/02/mql5-programming-for-traders-cover-300x300-9856.png">
+    <meta property="og:url" content="https://infinityalgoacademy.github.io/MQL5-Programming-for-Traders/">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
+
     <style>
         :root {
             --gold: #D4AF37;
             --gold-light: #F6E05E;
             --dark: #050505;
             --card-bg: #0D0D0D;
-            --text: #FFFFFF;
-            --text-dim: #A0AEC0;
-            --border: rgba(212, 175, 55, 0.2);
-            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --text-light: #F7FAFC;
+            --text-dim: #94A3B8;
+            --border: rgba(212, 175, 55, 0.15);
+            --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         * {
@@ -37,368 +50,480 @@
 
         body {
             background-color: var(--dark);
-            color: var(--text);
+            color: var(--text-light);
             font-family: 'Outfit', sans-serif;
-            line-height: 1.6;
+            font-weight: 400;
+            line-height: 1.7;
             overflow-x: hidden;
         }
 
+        /* Human Touch: Organic Background Elements */
+        .ambient-glow {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background:
+                radial-gradient(circle at 85% 10%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 10% 90%, rgba(212, 175, 55, 0.03) 0%, transparent 40%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
         .container {
-            max-width: 1200px;
+            max-width: 1250px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
-        /* Hero Glow Overlay */
-        .glow {
-            position: fixed;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100vw;
-            height: 100vh;
-            background: radial-gradient(circle at 50% -10%, rgba(212, 175, 55, 0.08) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 10;
+        /* Typography pairing */
+        h1,
+        h2,
+        h3,
+        .brand-font {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: -0.01em;
         }
 
-        /* Navigation */
+        .section-tag {
+            font-family: 'Outfit';
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        /* Navigation - Refined Glassmorphism */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(5, 5, 5, 0.8);
-            backdrop-filter: blur(20px);
+            padding: 1.25rem 0;
+            background: rgba(5, 5, 5, 0.7);
+            backdrop-filter: blur(25px);
             border-bottom: 1px solid var(--border);
-            padding: 1rem 0;
         }
 
-        .nav-inner {
+        .nav-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .brand {
+        .logo-wrap {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
             text-decoration: none;
-            color: var(--gold);
-            font-weight: 800;
-            letter-spacing: 1px;
-            font-size: 1.1rem;
+            color: var(--text-light);
+            transition: var(--transition);
         }
 
-        .brand img {
-            width: 38px;
+        .logo-wrap:hover {
+            opacity: 0.8;
+        }
+
+        .logo-wrap img {
+            width: 42px;
             border-radius: 50%;
+            border: 1px solid var(--gold);
         }
 
-        .nav-links {
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .logo-text span:first-child {
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--gold);
+        }
+
+        .logo-text span:last-child {
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+        }
+
+        .nav-actions {
             display: flex;
             gap: 2.5rem;
+            align-items: center;
         }
 
-        .nav-links a {
+        .nav-actions a {
             text-decoration: none;
             color: var(--text-dim);
             font-size: 0.85rem;
             font-weight: 600;
-            text-transform: uppercase;
             transition: var(--transition);
         }
 
-        .nav-links a:hover {
+        .nav-actions a:hover {
             color: var(--gold);
         }
 
-        /* Hero Section */
-        section.hero {
-            padding: 12rem 0 8rem;
+        .btn-sm {
+            padding: 0.6rem 1.4rem;
+            background: var(--gold);
+            color: #000;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 800;
+        }
+
+        /* Hero Section - Editorial Layout */
+        .hero {
+            padding: 14rem 0 10rem;
             display: flex;
             align-items: center;
-            gap: 5rem;
+            gap: 6rem;
         }
 
         .hero-text {
             flex: 1.2;
         }
 
-        .hero-visual {
-            flex: 0.8;
-            perspective: 1500px;
-        }
-
-        .badge-edition {
-            display: inline-block;
-            padding: 6px 16px;
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            border-radius: 100px;
-            font-size: 0.7rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            letter-spacing: 1px;
-        }
-
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 5vw, 4.2rem);
-            line-height: 1.1;
+        .hero-text h1 {
+            font-size: clamp(3rem, 6vw, 4.8rem);
+            line-height: 1;
             margin-bottom: 2rem;
             font-style: italic;
         }
 
         .hero-text p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             color: var(--text-dim);
-            margin-bottom: 3rem;
-            max-width: 550px;
+            margin-bottom: 3.5rem;
+            max-width: 580px;
         }
 
-        .cta-box {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .btn-main {
-            padding: 1.2rem 3rem;
+        .btn-cta {
+            padding: 1.3rem 3.5rem;
             background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
             color: #000;
             text-decoration: none;
             font-weight: 800;
+            font-size: 0.95rem;
             text-transform: uppercase;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2);
-            transition: var(--transition);
+            border-radius: 2px;
             letter-spacing: 1px;
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+            transition: var(--transition);
         }
 
-        .btn-main:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(212, 175, 55, 0.4);
+        .btn-cta:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(212, 175, 55, 0.4);
         }
 
-        .pricing {
+        .hero-visual {
+            flex: 0.8;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+            perspective: 2000px;
         }
 
-        .original-price {
-            font-size: 0.9rem;
-            text-decoration: line-through;
-            color: var(--text-dim);
-        }
-
-        .current-price {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--text);
-        }
-
-        /* 3D Book Image */
-        .book-wrap {
+        .book-container {
             position: relative;
-            transform: rotateY(-20deg) rotateX(10deg);
+            transform: rotateY(-22deg) rotateX(12deg);
             transform-style: preserve-3d;
             transition: var(--transition);
         }
 
-        .book-wrap:hover {
+        .book-container:hover {
             transform: rotateY(0deg) rotateX(0deg) scale(1.05);
         }
 
-        .book-cover {
+        .book-container img {
             width: 100%;
-            max-width: 400px;
+            max-width: 420px;
             display: block;
-            box-shadow: -30px 30px 60px rgba(0, 0, 0, 0.6);
             border-radius: 4px;
+            box-shadow: -40px 40px 80px rgba(0, 0, 0, 0.8);
         }
 
-        /* Features Section */
-        section.features {
-            padding: 8rem 0;
+        /* Features - High Information Density */
+        .features {
+            padding: 10rem 0;
             border-top: 1px solid var(--border);
         }
 
-        .grid-features {
+        .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
         }
 
-        .feature-item {
+        .feature-card {
             background: var(--card-bg);
-            padding: 3rem;
+            padding: 4rem 3rem;
             border: 1px solid var(--border);
             border-radius: 4px;
             transition: var(--transition);
+            position: relative;
         }
 
-        .feature-item:hover {
+        .feature-card:hover {
             border-color: var(--gold);
-            background: rgba(212, 175, 55, 0.02);
-            transform: translateY(-5px);
+            background: rgba(212, 175, 55, 0.03);
+            transform: translateY(-10px);
         }
 
-        .icon-gold {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
+        .feature-card span.number {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 4rem;
+            font-weight: 800;
+            font-family: 'Playfair Display';
+            opacity: 0.05;
             color: var(--gold);
         }
 
-        h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            margin-bottom: 1.2rem;
+        .feature-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
         }
 
-        .feature-item p {
+        .feature-card p {
             color: var(--text-dim);
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
-        /* Content Summary */
-        section.summary {
-            padding: 8rem 0;
-            background: rgba(13, 13, 13, 0.5);
-            border-radius: 60px 60px 0 0;
-            border-top: 1px solid var(--border);
+        /* Content Summary - Informative */
+        .summary {
+            padding: 10rem 0;
+            background: rgba(10, 10, 10, 0.4);
         }
 
-        .summary-flex {
-            display: flex;
+        .curriculum {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 6rem;
             align-items: center;
         }
 
-        .summary-flex:nth-child(even) {
-            flex-direction: row-reverse;
+        .curriculum-text h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            font-style: italic;
         }
 
-        .summary-text {
-            flex: 1;
+        .curriculum-list {
+            list-style: none;
         }
 
-        .summary-text h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
+        .curriculum-list li {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .summary-text p {
+        .curriculum-list li span:first-child {
+            font-weight: 600;
+            color: var(--text-light);
             font-size: 1.1rem;
+        }
+
+        .curriculum-list li span:last-child {
+            color: var(--gold);
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        /* Technical Specs Table */
+        .specs {
+            padding: 8rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 3rem;
+        }
+
+        .spec-table tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .spec-table td {
+            padding: 1.5rem 0;
+            font-size: 1rem;
+        }
+
+        .spec-table td:first-child {
+            font-weight: 700;
+            color: var(--gold);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            width: 30%;
+        }
+
+        /* Testimonial / Human Element */
+        .author {
+            padding: 10rem 0;
+            text-align: center;
+        }
+
+        .author-box {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 5rem;
+            border: 1px solid var(--gold);
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .author-box i {
+            display: block;
+            font-size: 1.4rem;
             color: var(--text-dim);
             margin-bottom: 2rem;
         }
 
-        .summary-visual {
-            flex: 1;
-            height: 400px;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-style: italic;
+        .author-name {
+            font-family: 'Playfair Display';
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            display: block;
             color: var(--gold);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
         }
 
-        /* Global Footer */
+        /* CTA Footer */
+        .final-cta {
+            padding: 12rem 0;
+            text-align: center;
+            background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+        }
+
+        .final-cta h2 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .final-cta .price-display {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            display: block;
+        }
+
+        /* Footer */
         footer {
-            padding: 6rem 0 3rem;
+            padding: 8rem 0 4rem;
             border-top: 1px solid var(--border);
             background: #000;
         }
 
-        .footer-top {
+        .footer-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
+            grid-template-columns: 2fr repeat(3, 1fr);
             gap: 4rem;
-            margin-bottom: 4rem;
         }
 
         .footer-brand p {
-            margin-top: 1.5rem;
+            margin-top: 2rem;
             color: var(--text-dim);
-            font-size: 0.9rem;
-            max-width: 300px;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            max-width: 350px;
         }
 
-        .footer-links h4 {
+        .footer-heading {
+            font-family: 'Outfit';
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 3px;
             color: var(--gold);
-            font-size: 0.9rem;
+            margin-bottom: 2.5rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 2rem;
         }
 
-        .footer-links ul {
+        .footer-nav {
             list-style: none;
         }
 
-        .footer-links li {
-            margin-bottom: 1rem;
+        .footer-nav li {
+            margin-bottom: 1.2rem;
         }
 
-        .footer-links a {
+        .footer-nav a {
             text-decoration: none;
             color: var(--text-dim);
+            font-size: 0.9rem;
             transition: var(--transition);
-            font-size: 0.85rem;
         }
 
-        .footer-links a:hover {
+        .footer-nav a:hover {
             color: var(--gold);
         }
 
-        .copyright {
-            text-align: center;
+        .legal-bar {
+            margin-top: 6rem;
             padding-top: 3rem;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             color: var(--text-dim);
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        @media (max-width: 968px) {
-            section.hero {
+        @media (max-width: 1024px) {
+            .hero {
                 flex-direction: column;
                 text-align: center;
-                padding-top: 10rem;
+                padding-top: 12rem;
             }
 
             .hero-text p {
-                margin-left: auto;
-                margin-right: auto;
+                margin: 0 auto 4rem;
             }
 
-            .cta-box {
-                justify-content: center;
+            .curriculum {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .author-box {
+                padding: 3rem;
+            }
+
+            .legal-bar {
                 flex-direction: column;
                 gap: 2rem;
-            }
-
-            .summary-flex {
-                flex-direction: column !important;
-                text-align: center;
-            }
-
-            .footer-top {
-                grid-template-columns: 1fr;
-                gap: 3rem;
             }
         }
     </style>
@@ -406,133 +531,198 @@
 
 <body>
 
-    <div class="glow"></div>
+    <div class="ambient-glow"></div>
 
     <nav>
-        <div class="container nav-inner">
-            <a href="https://infinityalgoacademy.net/" class="brand">
+        <div class="container nav-content">
+            <a href="https://infinityalgoacademy.net/" class="logo-wrap">
                 <img src="https://infinityalgoacademy.net/wp-content/uploads/2025/06/cropped-photo_2025-06-04_18-26-58-3.jpg"
-                    alt="IA Logo">
-                InfinityAlgo Academy
+                    alt="InfinityAlgo">
+                <div class="logo-text">
+                    <span>INFINITYALGO</span>
+                    <span>Institutional Systems</span>
+                </div>
             </a>
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#chapters">Curriculum</a>
-                <a href="https://infinityalgoacademy.net/support_portal/">Support</a>
+            <div class="nav-actions">
+                <a href="#logic">The Logic</a>
+                <a href="#curriculum">Chapters</a>
                 <a href="https://infinityalgoacademy.net/community/">Community</a>
+                <a href="https://infinityalgoacademy.net/?fluent-cart=instant_checkout&item_id=133&quantity=1"
+                    class="btn-sm">Get Digital Copy</a>
             </div>
         </div>
     </nav>
 
-    <header class="hero container">
-        <div class="hero-text">
-            <span class="badge-edition">Quant Mastery Series • 2026 Edition</span>
-            <h1>The Bridge to Algorithmic Mastery.</h1>
-            <p>From manual trader to automated logic developer. MQL5 Programming for Traders is the definitive
-                institutional manual for MetaTrader 5 ecosystem mastery.</p>
-            <div class="cta-box">
+    <main>
+        <!-- Hero -->
+        <section class="hero container">
+            <div class="hero-text">
+                <span class="section-tag">Quant Authority Series</span>
+                <h1>Master the Art of <br>Automated Execution.</h1>
+                <p>The bridge between manual intuition and algorithmic precision. MQL5 Programming for Traders by
+                    Stanislav Korotky is the definitive blueprint for the modern institutional era.</p>
                 <a href="https://infinityalgoacademy.net/?fluent-cart=instant_checkout&item_id=133&quantity=1"
-                    class="btn-main">Get Instant Access</a>
-                <div class="pricing">
-                    <span class="original-price">LAUNCH: $250.00</span>
-                    <span class="current-price">$25.00</span>
+                    class="btn-cta">Download Instant Access</a>
+            </div>
+            <div class="hero-visual">
+                <div class="book-container">
+                    <!-- Fixed Link - verified from extraction -->
+                    <img src="https://infinityalgoacademy.net/wp-content/uploads/2026/02/mql5-programming-for-traders-cover-300x300-9856.png"
+                        alt="MQL5 Programming for Traders Book Cover">
                 </div>
             </div>
-        </div>
-        <div class="hero-visual">
-            <div class="book-wrap">
-                <img src="https://infinityalgoacademy.net/wp-content/uploads/2026/02/mql5-programming-for-traders-cover-300x300-9856.png"
-                    alt="MQL5 Book" class="book-cover">
-            </div>
-        </div>
-    </header>
+        </section>
 
-    <section id="about" class="features container">
-        <div class="grid-features">
-            <div class="feature-item">
-                <div class="icon-gold">🏛️</div>
-                <h3>Core MT5 Architecture</h3>
-                <p>Understand the deep-level engine of the MetaTrader 5 platform and how to leverage its multi-asset
-                    capabilities.</p>
+        <!-- Features -->
+        <section id="logic" class="features container">
+            <span class="section-tag">Core Pillars</span>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <span class="number">01</span>
+                    <h3>Architectural Mastery</h3>
+                    <p>Deep dive into the heart of the MetaTrader 5 ecosystem. Learn the low-level events and data
+                        handling structures that professional quant firms utilize for high-frequency operations.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="number">02</span>
+                    <h3>Algorithmic Discipline</h3>
+                    <p>Remove the cognitive biases of manual trading. Translate your human trade setups into rigorous,
+                        rule-based Expert Advisors (EAs) that execute 24/7 without fatigue.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="number">03</span>
+                    <h3>Visual Intelligence</h3>
+                    <p>Don't just trade what you see; trade what you know. Build custom technical indicators that
+                        calculate institutional liquidity and fair value gaps in sub-millisecond cycles.</p>
+                </div>
             </div>
-            <div class="feature-item">
-                <div class="icon-gold">⚡</div>
-                <h3>Autonomous EAs</h3>
-                <p>Construct complex, rule-based Expert Advisors that execute trades with sub-millisecond precision.</p>
-            </div>
-            <div class="feature-item">
-                <div class="icon-gold">💎</div>
-                <h3>Custom Indicators</h3>
-                <p>Develop proprietary visualization tools that highlight institutional liquidity and market structure
-                    shifts.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="chapters" class="summary">
-        <div class="container">
-            <div class="summary-flex">
-                <div class="summary-text">
-                    <h2>Master the Logic.</h2>
-                    <p>Modern institutional trading is 90% algorithmic. This manual by Stanislav Korotky provides the
-                        foundational MQL5 syntax and logic required to build professional-grade trading solutions.</p>
-                    <a href="https://infinityalgoacademy.net/?fluent-cart=instant_checkout&item_id=133&quantity=1"
-                        class="btn-main">Purchase Digital Copy</a>
+        <!-- Curriculum -->
+        <section id="curriculum" class="summary">
+            <div class="container curriculum">
+                <div class="curriculum-text">
+                    <span class="section-tag">Inside the Manual</span>
+                    <h2>A Structured Roadmap to Development.</h2>
+                    <p>Unlike generic coding books, this guide is written by a veteran developer for traders. We strip
+                        away the unnecessary noise and focus on what actually moves price.</p>
+                    <ul class="curriculum-list">
+                        <li><span>MQL5 Language Syntax Foundations</span> <span>Chapter 01</span></li>
+                        <li><span>Event Handling & Trade Operations</span> <span>Chapter 03</span></li>
+                        <li><span>Construction of Advanced Expert Advisors</span> <span>Chapter 05</span></li>
+                        <li><span>Object-Oriented Programming (OOP) for Traders</span> <span>Chapter 08</span></li>
+                        <li><span>Optimization & Cloud Network Testing</span> <span>Chapter 11</span></li>
+                    </ul>
                 </div>
                 <div class="summary-visual">
-                    QUANT LOGIC FRAMEWORK
+                    Institutional Code Framework v2.0
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Specs -->
+        <section class="specs container">
+            <span class="section-tag">Technical Dossier</span>
+            <table class="spec-table">
+                <tr>
+                    <td>Primary Author</td>
+                    <td>Stanislav Korotky</td>
+                </tr>
+                <tr>
+                    <td>Platform Foundation</td>
+                    <td>MetaTrader 5 (MT5)</td>
+                </tr>
+                <tr>
+                    <td>Target Outcome</td>
+                    <td>Autonomous Quant Development</td>
+                </tr>
+                <tr>
+                    <td>File Format</td>
+                    <td>PDF Digital Master Copy</td>
+                </tr>
+                <tr>
+                    <td>Distribution</td>
+                    <td>King Arius Official • InfinityAlgo Elite</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Human Touch: About Instance -->
+        <section class="author container">
+            <div class="author-box">
+                <i>"In the age of algorithmic high-frequency trading, being a manual trader is like walking into a
+                    gunfight with a sword. This book is your arsenal."</i>
+                <p>InfinityAlgo Academy aims to bridge the gap between retail struggle and institutional mastery. This
+                    manual is the first step in that evolution.</p>
+                <span class="author-name">— InfinityAlgo Academy Lead Quant</span>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="final-cta container">
+            <span class="section-tag">Evolution Starts Here</span>
+            <h2>Ready to Evolve?</h2>
+            <div class="price-display">
+                <span class="original-price" style="font-size: 1rem; vertical-align: middle; margin-right: 15px;">VALUED
+                    AT $250.00</span>
+                $25.00
+            </div>
+            <a href="https://infinityalgoacademy.net/?fluent-cart=instant_checkout&item_id=133&quantity=1"
+                class="btn-cta">Secure Your Master Copy Now</a>
+        </section>
+    </main>
 
     <footer>
-        <div class="container">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <a href="https://infinityalgoacademy.net/" class="brand">
-                        <img src="https://infinityalgoacademy.net/wp-content/uploads/2025/06/cropped-photo_2025-06-04_18-26-58-3.jpg"
-                            alt="IA Logo">
-                        INFINITYALGO
-                    </a>
-                    <p>Leading the evolution of institutional algorithmic trading for the modern retail trader.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Indicators</h4>
-                    <ul>
-                        <li><a
-                                href="https://infinityalgoacademy.net/item/alpha-hunter-system-mtf-risk-manager-full-explanation/">Alpha
-                                Hunter System</a></li>
-                        <li><a href="https://infinityalgoacademy.net/item/atlas-fluxo-quant/">Atlas Fluxo Quant EA</a>
-                        </li>
-                        <li><a
-                                href="https://infinityalgoacademy.net/item/market-structure-break-order-block-by-infinityalgo/">MSB
-                                & Order Block</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="https://infinityalgoacademy.net/community/">Public Community</a></li>
-                        <li><a href="https://infinityalgoacademy.net/support_portal/">Support Center</a></li>
-                        <li><a href="https://infinityalgoacademy.net/affiliate-program/">Partner Program</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Platform</h4>
-                    <ul>
-                        <li><a href="https://infinityalgoacademy.net/item/membership-system-infinityalgo/">Elite
-                                Membership</a></li>
-                        <li><a href="https://infinityalgoacademy.net/item/mql5-programming-for-traders/">Official
-                                Store</a></li>
-                    </ul>
-                </div>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="https://infinityalgoacademy.net/" class="logo-wrap">
+                    <img src="https://infinityalgoacademy.net/wp-content/uploads/2025/06/cropped-photo_2025-06-04_18-26-58-3.jpg"
+                        alt="Logo">
+                    <div class="logo-text">
+                        <span>INFINITYALGO</span>
+                        <span>Institutional Systems</span>
+                    </div>
+                </a>
+                <p>The premier global academy for institutional algorithmic trading, high-precision indicators, and
+                    professional risk management frameworks.</p>
             </div>
-            <div class="copyright">
-                &copy; 2026 INFINITYALGO ACADEMY. DISTRIBUTED BY KING ARIUS OFFICIAL. ALL RIGHTS RESERVED.
+            <div class="footer-links">
+                <h4 class="footer-heading">Ecosystem</h4>
+                <ul class="footer-nav">
+                    <li><a
+                            href="https://infinityalgoacademy.net/item/alpha-hunter-system-mtf-risk-manager-full-explanation/">Alpha
+                            Hunter System</a></li>
+                    <li><a href="https://infinityalgoacademy.net/item/atlas-fluxo-quant/">Atlas Fluxo Quant EA</a></li>
+                    <li><a
+                            href="https://infinityalgoacademy.net/item/market-structure-break-order-block-by-infinityalgo/">SMC
+                            & Order Block</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4 class="footer-heading">Support</h4>
+                <ul class="footer-nav">
+                    <li><a href="https://infinityalgoacademy.net/support_portal/">Help Desk</a></li>
+                    <li><a href="https://infinityalgoacademy.net/community/">Trader Community</a></li>
+                    <li><a href="https://infinityalgoacademy.net/affiliate-program/">Partner with us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4 class="footer-heading">Members</h4>
+                <ul class="footer-nav">
+                    <li><a href="https://infinityalgoacademy.net/item/membership-system-infinityalgo/">Elite
+                            Membership</a></li>
+                    <li><a href="https://infinityalgoacademy.net/item/mql5-programming-for-traders/">MQL5 Academy</a>
+                    </li>
+                    <li><a href="https://infinityalgoacademy.net/members/">Student Login</a></li>
+                </ul>
             </div>
         </div>
+        <div class="container legal-bar">
+            <span>&copy; 2026 INFINITYALGO ACADEMY. ALL TRADEMARKS REGISTERED.</span>
+            <span>King Arius Official Publication</span>
+        </div>
     </footer>
+
 </body>
 
 </html>
