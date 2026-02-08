@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MQL5 Programming for Traders | Master Algorithmic Trading</title>
+    <meta name="description"
+        content="Master MQL5 programming and build your own Expert Advisors and Indicators. The definitive guide for MetaTrader 5 automation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Montserrat:wght@700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #D4AF37;
+            --primary-dark: #B8860B;
+            --bg-dark: #0A0A0A;
+            --bg-card: #161616;
+            --text-light: #F7FAFC;
+            --text-muted: #A0AEC0;
+            --accent: #E2E8F0;
+            --gradient: linear-gradient(135deg, #D4AF37 0%, #F6E05E 100%);
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navbar */
+        nav {
+            padding: 1.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 40px;
+            border-radius: 50%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 0 6rem;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: -10%;
+            width: 40%;
+            height: 40%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--glass);
+            border: 1px solid var(--primary);
+            border-radius: 50px;
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #fff, #D4AF37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            perspective: 1000px;
+        }
+
+        .book-cover {
+            width: 380px;
+            transform: rotateY(-15deg) rotateX(5deg);
+            box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            transition: transform 0.5s ease;
+        }
+
+        .book-cover:hover {
+            transform: rotateY(0deg) rotateX(0deg);
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: #000;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
+        }
+
+        .price-tag {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .old-price {
+            font-size: 0.9rem;
+            text-decoration: line-through;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 8rem 0;
+            background: var(--bg-card);
+            border-radius: 50px 50px 0 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--glass);
+            padding: 3rem;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+        }
+
+        /* Benefits Area */
+        .benefits {
+            padding: 8rem 0;
+        }
+
+        .benefit-row {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            margin-bottom: 6rem;
+        }
+
+        .benefit-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .benefit-text {
+            flex: 1;
+        }
+
+        .benefit-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-img {
+            flex: 1;
+            background: var(--glass);
+            height: 300px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-style: italic;
+            color: var(--primary);
+        }
+
+        /* Call to Action Wrapper */
+        .cta-wrapper {
+            background: var(--gradient);
+            padding: 6rem 0;
+            text-align: center;
+            color: #000;
+            border-radius: 30px;
+            margin: 4rem 0;
+        }
+
+        .cta-wrapper h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-wrapper p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .footer-logo {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 968px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 8rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-image .book-cover {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .benefit-row {
+                flex-direction: column !important;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="container" style="display:flex; justify-content: space-between; align-items: center; width:100%;">
+            <a href="https://infinityalgoacademy.net/" class="logo">
+                <img src="https://infinityalgoacademy.net/wp-content/uploads/2025/06/cropped-photo_2025-06-04_18-26-58-3.jpg"
+                    alt="InfinityAlgo">
+                INFINITYALGO
+            </a>
+            <div class="nav-links">
+                <a href="#features">Details</a>
+                <a href="#benefits">Chapters</a>
+                <a href="https://infinityalgoacademy.net/support_portal/">Support</a>
+                <a href="https://infinityalgoacademy.net/community/" class="btn btn-primary"
+                    style="padding: 0.5rem 1.2rem; color: #000;">Join Community</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero container">
+        <div class="hero-content">
+            <span class="badge">Institutional Series</span>
+            <h1>Unlock the Power of MetaTrader 5 Programming</h1>
+            <p>From manual trader to Quant Developer. Master MQL5, build autonomous EAs, and bridge the gap between
+                human intuition and machine execution.</p>
+            <div class="cta-group">
+                <div class="price-tag">
+                    <span class="old-price">$250.00 Academy Launch</span>
+                    $25.00
+                </div>
+                <a href="https://infinityalgoacademy.net/?fluent-cart=instant_checkout&item_id=133&quantity=1"
+                    class="btn btn-primary">Purchase Now</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://infinityalgoacademy.net/wp-content/uploads/2026/02/mql5-programming-for-traders-cover-300x300-9856.png"
+                alt="MQL5 Programming for Traders Cover" class="book-cover">
+        </div>
+    </header>
+
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>What's Inside the Manual</h2>
+                <p>The definitive guide to algorithmic excellence by Stanislav Korotky.</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">🏗️</div>
+                    <h3>Core Foundations</h3>
+                    <p>Master the syntax and logic of MQL5 from the ground up. Perfect for beginners and advanced
+                        developers alike.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Autonomous EAs</h3>
+                    <p>Learn to build bots that execute trades with lightning speed, removing human emotion from the
+                        equation.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🛠️</div>
+                    <h3>Custom Indicators</h3>
+                    <p>Develop your own proprietary visual tools and filters to see market patterns that others miss.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌍</div>
+                    <h3>MT5 Ecosystem</h3>
+                    <p>Understand the deep architecture of the world's most advanced multi-asset trading platform.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits" class="benefits container">
+        <div class="benefit-row">
+            <div class="benefit-text">
+                <h2>Automate Your Intelligence</h2>
+                <p>Modern markets move too fast for manual execution. This book teaches you how to translate your manual
+                    strategies into precise, rule-based algorithms that never sleep.</p>
+            </div>
+            <div class="benefit-img">
+                Institutional-Grade Logic Training
+            </div>
+        </div>
+
+        <div class="benefit-row">
+            <div class="benefit-text">
+                <h2>Institutional Edge</h2>
+                <p>Join the 0.1% of traders who don't just use tools, but build them. Access the same logic used by
+                    high-frequency firms to manage risk and entry timing.</p>
+            </div>
+            <div class="benefit-img">
+                Quant Developer Mindset
+            </div>
+        </div>
+
+        <div class="cta-wrapper">
+            <h2>Ready to Evolve?</h2>
+            <p>Join thousands of traders who have transitioned to algorithmic mastery.</p>
+            <a href="https://infinityalgoacademy.net/?fluent-cart=instant_checkout&item_id=133&quantity=1"
+                class="btn btn-primary" style="background: #000; color: var(--primary); font-size: 1.2rem;">Get Instant
+                Access for $25.00</a>
+        </div>
+    </section>
+
+    <footer class="container">
+        <div class="footer-grid">
+            <div class="footer-info">
+                <div class="logo footer-logo">
+                    <img src="https://infinityalgoacademy.net/wp-content/uploads/2025/06/cropped-photo_2025-06-04_18-26-58-3.jpg"
+                        alt="InfinityAlgo">
+                    INFINITYALGO
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">The leading institutional trading academy,
+                    providing high-performance indicators, EAs, and professional training for modern traders.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Products</h4>
+                <ul>
+                    <li><a
+                            href="https://infinityalgoacademy.net/item/alpha-hunter-system-mtf-risk-manager-full-explanation/">Alpha
+                            Hunter System</a></li>
+                    <li><a href="https://infinityalgoacademy.net/item/atlas-fluxo-quant/">Atlas Fluxo Quant EA</a></li>
+                    <li><a
+                            href="https://infinityalgoacademy.net/item/market-structure-break-order-block-by-infinityalgo/">MSB
+                            & Order Block</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="https://infinityalgoacademy.net/support_portal/">Help Center</a></li>
+                    <li><a href="https://infinityalgoacademy.net/community/">Community</a></li>
+                    <li><a href="https://infinityalgoacademy.net/affiliate-program/">Affiliate Program</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="https://infinityalgoacademy.net/">Official Store</a></li>
+                    <li><a href="https://infinityalgoacademy.net/members/">Members Area</a></li>
+                </ul>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 4rem; color: var(--text-muted); font-size: 0.8rem;">
+            &copy; 2026 InfinityAlgo Academy. All Rights Reserved. Institutional Trading Tools.
+        </div>
+    </footer>
+
+</body>
+
+</html>
